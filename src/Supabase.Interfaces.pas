@@ -3,7 +3,7 @@ unit Supabase.Interfaces;
 interface
 
 uses
-  System.JSON, System.Generics.Collections;
+  System.JSON, System.Generics.Collections, Gotrue.Interfaces;
 
 type
 
@@ -64,10 +64,6 @@ iSupabaseTable = interface
   function Insert(aItems : TJSONArray) : iSupabaseTable; overload;
   function Update(aItem : TJSONObject) : iSupabaseTable;
   function Delete : iSupabaseTable;
-end;
-iSupabaseAuth = interface
-['{997698FB-2E38-4557-BA69-6E08CDD682DE}']
-
 end;
 
 iSupabase = interface
