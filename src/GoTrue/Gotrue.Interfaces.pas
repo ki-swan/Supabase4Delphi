@@ -23,7 +23,7 @@ iSignWithPasswordCredentials = interface
 //  function options : iSignOptions; { TODO -oYuki -cAuth :  }
 
   function ToJSON : TJSONObject;
-  function FromJSON(aValue : TJSONObject) : iSignWithPasswordCredentials;
+//  function FromJSON(aValue : TJSONObject) : iSignWithPasswordCredentials;
 end;
 
 iSupabaseAuthUser = interface; { TODO -oYuki -cAuth :  }

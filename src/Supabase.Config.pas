@@ -137,7 +137,7 @@ begin
   Result := Self;
   aValue.TryGetValue<String>('url', Furl);
   aValue.TryGetValue<String>('apikey', Fapikey);
-  aValue.TryGetValue<String>('auth', Fauth);
+//  aValue.TryGetValue<String>('auth', Fauth);
 end;
 
 function TSupabaseConfig.ToJSON: TJSONObject;
@@ -145,7 +145,8 @@ begin
   Result := TJSONObject.Create;
   Result.AddPair('url', Furl)
         .AddPair('apikey',Fapikey)
-        .AddPair('auth', Fauth);
+//        .AddPair('auth', Fauth)
+        ;
 end;
 
 end.

@@ -15,8 +15,8 @@ iSupabaseConfig = interface
   function url : String; overload;
   function apikey(aValue : String) : iSupabaseConfig; overload;
   function apikey : String; overload;
-  function auth(aValue : String) : iSupabaseConfig; overload;
-  function auth : String; overload;
+//  function auth(aValue : String) : iSupabaseConfig; overload;  { TODO -oYuki : not needed? }
+//  function auth : String; overload;   { TODO -oYuki : not needed? }
 
   function SaveFile(aFileName : String) : iSupabaseConfig;
   function LoadFile(aFileName : String) : iSupabaseConfig;
@@ -40,6 +40,7 @@ iSupabaseFilter = interface // Filters
   function Clear : iSupabaseTable;
 
   function eq(aColumn : String; aValue : Variant) : iSupabaseTable;
+  function neq(aColumn : String; aValue : Variant) : iSupabaseTable;
   function gt(aColumn : String; aValue : Variant) : iSupabaseTable;
   function lt(aColumn : String; aValue : Variant) : iSupabaseTable;
   function gte(aColumn : String; aValue : Variant) : iSupabaseTable;
@@ -48,9 +49,8 @@ iSupabaseFilter = interface // Filters
   function like(aColumn : String; aValue : Variant) : iSupabaseTable;
   function ilike(aColumn : String; aValue : Variant) : iSupabaseTable;
   function isNull(aColumn : String) : iSupabaseTable;
-//  function inList(aColumn : String; aValue : TList<Variant>) : iSupabaseTable;
-  function neq(aColumn : String; aValue : Variant) : iSupabaseTable;
 
+//  function inList(aColumn : String; aValue : TList<Variant>) : iSupabaseTable;
 //  function cs(aArrayColumn : String; aValue : TList<Variant>) : iSupabaseTable;
 //  function cd(aArrayColumn : String; aValue : TList<Variant>) : iSupabaseTable;
 end;

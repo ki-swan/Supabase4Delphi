@@ -98,33 +98,40 @@ end;
 
 function TSupabaseFilter.gt(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  FList.Add(TSupabaseFilterItem.New.Key(aColumn).Value('gt.'+VarToStr(aValue)));
 end;
 
 function TSupabaseFilter.gte(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  FList.Add(TSupabaseFilterItem.New.Key(aColumn).Value('gte.'+VarToStr(aValue)));
 end;
 
-function TSupabaseFilter.ilike(aColumn: String;
-  aValue: Variant): iSupabaseTable;
+function TSupabaseFilter.ilike(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  { TODO 2 -oYuki -cFilter :  }
+  raise Exception.Create('não implementado');
 end;
 
 function TSupabaseFilter.like(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  { TODO 2 -oYuki -cFilter :  }
+  raise Exception.Create('não implementado');
 end;
 
 function TSupabaseFilter.lt(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  FList.Add(TSupabaseFilterItem.New.Key(aColumn).Value('lt.'+VarToStr(aValue)));
 end;
 
 function TSupabaseFilter.lte(aColumn: String; aValue: Variant): iSupabaseTable;
 begin
-
+  Result := FParent;
+  FList.Add(TSupabaseFilterItem.New.Key(aColumn).Value('lte.'+VarToStr(aValue)));
 end;
 
 end.
