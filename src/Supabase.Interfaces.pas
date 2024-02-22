@@ -3,26 +3,12 @@ unit Supabase.Interfaces;
 interface
 
 uses
-  System.JSON, System.Generics.Collections, Gotrue.Interfaces;
+  System.JSON, System.Generics.Collections, Gotrue.Interfaces,
+  Supabase.Config.Interfaces;
 
 type
 
 iSupabaseTable = interface;
-
-iSupabaseConfig = interface
-['{EE783659-C74E-4926-B062-1E99609BCB99}']
-  function url(aValue : String) : iSupabaseConfig; overload;
-  function url : String; overload;
-  function apikey(aValue : String) : iSupabaseConfig; overload;
-  function apikey : String; overload;
-//  function auth(aValue : String) : iSupabaseConfig; overload;  { TODO -oYuki : not needed? }
-//  function auth : String; overload;   { TODO -oYuki : not needed? }
-
-  function SaveFile(aFileName : String) : iSupabaseConfig;
-  function LoadFile(aFileName : String) : iSupabaseConfig;
-  function FromJSON(aValue : TJSONObject) : iSupabaseConfig;
-  function ToJSON : TJSONObject;
-end;
 
 iSupabaseFilterItem = interface
 ['{0A471853-E85B-4A8C-97EB-893D2B611DFC}']

@@ -3,7 +3,7 @@ unit Supabase;
 interface
 
 uses
-  Supabase.Interfaces;
+  Supabase.Interfaces, Supabase.Config.Interfaces;
 
 type
 

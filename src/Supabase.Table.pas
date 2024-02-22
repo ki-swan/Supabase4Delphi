@@ -31,7 +31,7 @@ implementation
 
 uses
   Supabase.Filter,
-  RESTRequest4D, System.SysUtils;
+  System.SysUtils, RESTRequest4D;
 
 { TSupabaseTable }
 
@@ -61,7 +61,7 @@ begin
   LResponse := TRequest.New.BaseURL(FParent.Config.url)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-                           .AddHeader('Authorization', FParent.Config.auth)
+//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItems)
                            .Post;
@@ -76,7 +76,7 @@ begin
   LResponse := TRequest.New.BaseURL(FParent.Config.url)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-                           .AddHeader('Authorization', FParent.Config.auth)
+//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItem)
                            .Post;
@@ -92,8 +92,9 @@ begin
   Result := Self;
   lRequest := TRequest.New.BaseURL(FParent.Config.url)
                            .Resource(FTabela)
-                           .AddHeader('apikey', FParent.Config.apikey)
-                           .AddHeader('Authorization', FParent.Config.auth);
+                           .AddHeader('apikey', FParent.Config.apikey);
+//                           .AddHeader('Authorization', FParent.Config.auth)
+
 
   for I := 0 to Pred(FFilter.Count) do
     lRequest.AddParam(FFilter.itens[i].Key, FFilter.itens[i].Value);
@@ -110,12 +111,12 @@ var
   I: Integer;
 begin
   lRequest := TRequest.New
-                      .BaseURL(FParent.Config.url)
+                      .BaseURL(FParent.Config.url+'/rest/v1')
                       .Resource(FTabela)
                       .AddHeader('apikey', FParent.Config.apikey)
-                      .AddHeader('Authorization', FParent.Config.auth)
+//                      .AddHeader('Authorization', FParent.Config.auth)
                       .Accept('application/json');
-
+                                  ;
   for I := 0 to Pred(FFilter.Count) do
     lRequest.AddParam(FFilter.itens[i].Key, FFilter.itens[i].Value);
   lRequest.AddParam('select', aColumns);
@@ -123,7 +124,7 @@ begin
   LResponse := lRequest.Get;
 
   if LResponse.StatusCode = 200 then
-    Result := TJSONArray.ParseJSONValue(LResponse.Content) as TJSONArray
+    Result := TJSONObject.ParseJSONValue(LResponse.Content) as TJSONArray
   else
   begin
     Result := TJSONArray.Create;
@@ -141,7 +142,7 @@ begin
   lRequest := TRequest.New.BaseURL(FParent.Config.url)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-                           .AddHeader('Authorization', FParent.Config.auth)
+//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItem);
 
