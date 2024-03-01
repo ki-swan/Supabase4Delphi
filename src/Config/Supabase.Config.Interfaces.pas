@@ -13,8 +13,6 @@ iSupabaseConfig = interface
   function url : String; overload;
   function apikey(aValue : String) : iSupabaseConfig; overload;
   function apikey : String; overload;
-//  function auth(aValue : String) : iSupabaseConfig; overload;  { TODO -oYuki : not needed? }
-//  function auth : String; overload;   { TODO -oYuki : not needed? }
 
   function SaveFile(aFileName : String) : iSupabaseConfig;
   function LoadFile(aFileName : String) : iSupabaseConfig;

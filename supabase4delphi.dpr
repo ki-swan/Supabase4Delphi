@@ -12,20 +12,19 @@ uses
   Supabase.Interfaces in 'src\Supabase.Interfaces.pas',
   Supabase in 'src\Supabase.pas',
   Supabase.Table in 'src\Supabase.Table.pas',
-  Gotrue.Interfaces in 'src\GoTrue\Gotrue.Interfaces.pas',
-  GoTrue.SignWithPasswordCredentials in 'src\GoTrue\GoTrue.SignWithPasswordCredentials.pas',
   Supabase.Config.Interfaces in 'src\Config\Supabase.Config.Interfaces.pas',
   Supabase.Config in 'src\Config\Supabase.Config.pas';
+
 var
   lConfig : iSupabaseConfig;
 begin
   lConfig := TSupabaseConfig.New
-                            .url('https://bdpwggbizeeapdsfjzse.supabase.co')
-                            .apikey('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkcHdnZ2JpemVlYXBkc2ZqenNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3NTg2NTEsImV4cCI6MjAyMzMzNDY1MX0.Injr0lgDZavMKBOB_FUZzgUdDMUoxdMpQ--XRMvkoPQ');
+                            .url('https://rfbqvyzybpmsaysknnis.supabase.co')
+                            .apikey('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmYnF2eXp5YnBtc2F5c2tubmlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDkxMzg5MzYsImV4cCI6MjAyNDcxNDkzNn0.5lTqB7q7TLV0EzB33l79znvCEBZi0nVRZQ67xfIqBb0');
   try
     Writeln(TSupabase.New(lConfig)
-                     .From('chat')
-                     .Select('*')
+                     .From('empresas')
+                     .Select('nome_fantasia, documento, funcionarios(nome)')
                      .ToString);
   except
     on E: Exception do
