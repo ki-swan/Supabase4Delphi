@@ -13,6 +13,7 @@ private
   FParent : iSupabase;
   FTabela : String;
   FFilter : iSupabaseFilter;
+  FResource : String;
 public
   constructor Create(aParent : iSupabase; aTabela : String); reintroduce;
   destructor Destroy; override;
@@ -40,6 +41,7 @@ begin
   FTabela := aTabela;
   FFilter := TSupabaseFilter.New(Self);
   FParent := aParent;
+  FResource := '/rest/v1/';
 end;
 
 destructor TSupabaseTable.Destroy;
@@ -58,10 +60,9 @@ var
   LResponse: IResponse;
 begin
   Result := Self;
-  LResponse := TRequest.New.BaseURL(FParent.Config.url)
+  LResponse := TRequest.New.BaseURL(FParent.Config.url+FResource)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItems)
                            .Post;
@@ -73,10 +74,9 @@ var
   LResponse: IResponse;
 begin
   Result := Self;
-  LResponse := TRequest.New.BaseURL(FParent.Config.url)
+  LResponse := TRequest.New.BaseURL(FParent.Config.url+FResource)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItem)
                            .Post;
@@ -90,10 +90,9 @@ var
   I: Integer;
 begin
   Result := Self;
-  lRequest := TRequest.New.BaseURL(FParent.Config.url)
+  lRequest := TRequest.New.BaseURL(FParent.Config.url+FResource)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey);
-//                           .AddHeader('Authorization', FParent.Config.auth)
 
 
   for I := 0 to Pred(FFilter.Count) do
@@ -111,10 +110,9 @@ var
   I: Integer;
 begin
   lRequest := TRequest.New
-                      .BaseURL(FParent.Config.url+'/rest/v1')
+                      .BaseURL(FParent.Config.url+FResource)
                       .Resource(FTabela)
                       .AddHeader('apikey', FParent.Config.apikey)
-//                      .AddHeader('Authorization', FParent.Config.auth)
                       .Accept('application/json');
                                   ;
   for I := 0 to Pred(FFilter.Count) do
@@ -139,10 +137,9 @@ var
   I: Integer;
 begin
   Result := Self;
-  lRequest := TRequest.New.BaseURL(FParent.Config.url)
+  lRequest := TRequest.New.BaseURL(FParent.Config.url+FResource)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)
-//                           .AddHeader('Authorization', FParent.Config.auth)
                            .ContentType('application/json')
                            .AddBody(aItem);
 
