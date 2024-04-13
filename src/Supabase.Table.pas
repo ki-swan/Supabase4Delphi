@@ -31,15 +31,14 @@ end;
 implementation
 
 uses
-  Supabase.Filter,
-  System.SysUtils, RESTRequest4D;
+  System.SysUtils, RESTRequest4D, Supabase.Factory;
 
 { TSupabaseTable }
 
 constructor TSupabaseTable.Create(aParent : iSupabase; aTabela : String);
 begin
   FTabela := aTabela;
-  FFilter := TSupabaseFilter.New(Self);
+  FFilter := TSupabaseFactory.New.Filter(Self);
   FParent := aParent;
   FResource := '/rest/v1/';
 end;
@@ -74,6 +73,7 @@ var
   LResponse: IResponse;
 begin
   Result := Self;
+
   LResponse := TRequest.New.BaseURL(FParent.Config.url+FResource)
                            .Resource(FTabela)
                            .AddHeader('apikey', FParent.Config.apikey)

@@ -3,7 +3,7 @@ unit Supabase.Config;
 interface
 
 uses
-  System.JSON, Supabase.Config.Interfaces;
+  System.JSON, Supabase.Interfaces;
 
 type
 

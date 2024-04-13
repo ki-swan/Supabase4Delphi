@@ -3,7 +3,7 @@ unit Supabase.Factory;
 interface
 
 uses
-  Supabase.Interfaces, Supabase.Config.Interfaces;
+  Supabase.Interfaces, Supabase.Config;
 
 type
 
@@ -24,7 +24,7 @@ end;
 implementation
 
 uses
-  Supabase, Supabase.Table, Supabase.Filter, Supabase.Config;
+  Supabase, Supabase.Table, Supabase.Filter;
 
 { TSupabaseFactory }
 
@@ -56,7 +56,7 @@ end;
 
 function TSupabaseFactory.supabase(aConfig : iSupabaseConfig): iSupabase;
 begin
-  Result := TSupabase.New(aConfig);
+  Result := TSupabase.New;
 end;
 
 function TSupabaseFactory.table(aParent : iSupabase; aTabela : String): iSupabaseTable;

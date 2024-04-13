@@ -3,10 +3,22 @@ unit Supabase.Interfaces;
 interface
 
 uses
-  System.JSON, System.Generics.Collections,
-  Supabase.Config.Interfaces;
+  System.JSON, System.Generics.Collections;
 
 type
+
+iSupabaseConfig = interface
+['{39E1AF43-0EDD-41F5-A088-821B2964E3A1}']
+  function url(aValue : String) : iSupabaseConfig; overload;
+  function url : String; overload;
+  function apikey(aValue : String) : iSupabaseConfig; overload;
+  function apikey : String; overload;
+
+  function SaveFile(aFileName : String) : iSupabaseConfig;
+  function LoadFile(aFileName : String) : iSupabaseConfig;
+  function FromJSON(aValue : TJSONObject) : iSupabaseConfig;
+  function ToJSON : TJSONObject;
+end;
 
 iSupabaseTable = interface;
 

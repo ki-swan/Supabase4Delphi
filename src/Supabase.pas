@@ -3,17 +3,17 @@ unit Supabase;
 interface
 
 uses
-  Supabase.Interfaces, Supabase.Config.Interfaces;
+  Supabase.Interfaces;
 
 type
 
 TSupabase = class(TInterfacedObject, iSupabase)
-private
+strict private
   FConfig : iSupabaseConfig;
 public
-  constructor Create(aConfig : iSupabaseConfig); reintroduce;
+  constructor Create; reintroduce;
   destructor Destroy; override;
-  class function New(aConfig : iSupabaseConfig) : iSupabase;
+  class function New : iSupabase;
 
   function From(aTable : String) : iSupabaseTable;
   function Config : iSupabaseConfig;
@@ -22,13 +22,13 @@ end;
 implementation
 
 uses
-  Supabase.Table;
+  Supabase.Factory;
 
 { TSupabase }
 
-constructor TSupabase.Create(aConfig : iSupabaseConfig);
+constructor TSupabase.Create;
 begin
-   FConfig := aConfig;
+   FConfig := TSupabaseFactory.New.config;
 end;
 
 destructor TSupabase.Destroy;
@@ -37,14 +37,14 @@ begin
   inherited;
 end;
 
-class function TSupabase.New(aConfig : iSupabaseConfig): iSupabase;
+class function TSupabase.New: iSupabase;
 begin
-  Result := TSupabase.Create(aConfig);
+  Result := TSupabase.Create;
 end;
 
 function TSupabase.From(aTable: String): iSupabaseTable;
 begin
-  Result := TSupabaseTable.New(Self, aTable);
+  Result := TSupabaseFactory.New.table(Self, aTable);
 end;
 
 function TSupabase.Config: iSupabaseConfig;
