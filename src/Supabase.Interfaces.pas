@@ -75,7 +75,7 @@ end;
 iSupabaseFactory = interface
 ['{3EDB7D77-3CC7-4781-99C5-352AFF287D45}']
   function config : iSupabaseConfig;
-  function supabase(aConfig : iSupabaseConfig) : iSupabase;
+  function supabase : iSupabase;
   function table(aParent : iSupabase; aTabela : String) : iSupabaseTable;
   function filter(aParent: iSupabaseTable) : iSupabaseFilter;
 end;

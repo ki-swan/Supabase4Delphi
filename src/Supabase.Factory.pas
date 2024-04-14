@@ -16,7 +16,7 @@ public
   class function New : iSupabaseFactory;
 
   function config : iSupabaseConfig;
-  function supabase(aConfig : iSupabaseConfig) : iSupabase;
+  function supabase : iSupabase;
   function table(aParent : iSupabase; aTabela : String) : iSupabaseTable;
   function filter(aParent: iSupabaseTable) : iSupabaseFilter;
 end;
@@ -54,7 +54,7 @@ begin
   Result := TSupabaseFilter.New(aParent);
 end;
 
-function TSupabaseFactory.supabase(aConfig : iSupabaseConfig): iSupabase;
+function TSupabaseFactory.supabase: iSupabase;
 begin
   Result := TSupabase.New;
 end;
