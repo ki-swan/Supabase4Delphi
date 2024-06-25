@@ -57,7 +57,7 @@ iSupabaseTable = interface
 ['{239B1CF5-2729-4EDB-B5D5-A19747F97DEB}']
   function AddFilter : iSupabaseFilter;
 
-  function Select(aColumns : String) : TJSONArray;
+  function Select(aColumns : String = '*') : TJSONArray;
   function Insert(aItem : TJSONObject) : iSupabaseTable; overload;
   function Insert(aItems : TJSONArray) : iSupabaseTable; overload;
   function Update(aItem : TJSONObject) : iSupabaseTable;

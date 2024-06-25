@@ -21,7 +21,7 @@ public
 
   function AddFilter : iSupabaseFilter;
 
-  function Select(aColumns : String) : TJSONArray;
+  function Select(aColumns : String = '*') : TJSONArray;
   function Insert(aItem : TJSONObject) : iSupabaseTable; overload;
   function Insert(aItems : TJSONArray) : iSupabaseTable; overload;
   function Update(aItem : TJSONObject) : iSupabaseTable;
